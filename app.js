@@ -280,4 +280,17 @@
 		printBookInfo,
 		availablePopularBooks
 	);
+
+	const extremelyPopularUnavailableBooks = R.pipe(
+		filterBooks,
+		createFilter(
+			R.complement(isAvailable)
+		)
+	)(isExtremelyPopular, books);
+
+	console.log('EXTREMELY POPULAR UNAVAILABLE BOOKS');
+	R.forEach(
+		printBookInfo,
+		extremelyPopularUnavailableBooks
+	);
 })();
